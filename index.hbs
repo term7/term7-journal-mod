@@ -75,9 +75,11 @@
 
                     {{^if @member.paid}}
                         <div class="gh-signup">
-                            <p class="gh-signup-description">Join the discussion on Matrix:</p>
+                            <p class="gh-signup-description">Follow the discussion on Matrix:</p>
                                 <div id="matrix"></div>
                         </div>
+                        <img src="{{asset "images/matrix-logo.svg"}}" alt="Matrix" style="-webkit-filter: invert(100%);
+          filter: invert(100%); width: 100%">
                     {{/if}}
                 </section>
 
