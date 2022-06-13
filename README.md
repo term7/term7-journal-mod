@@ -11,6 +11,7 @@ If you're looking to contribute to Ghost, head over to the main repository [here
 - We removed content related to twitter and facebook
 - We changed the copyright from © to /| copyme /|
 - We added a hook for Matrix Live
+- We added jQuery (necessary for Matrix Live)
 
 # Matrix Live
 
@@ -19,7 +20,7 @@ Then head over to [Matrix Live](https://live.hello-matrix.net/) and read the ins
 
 You can make your room either open for anyone to join, or configure it to be on invite only. It is up to you.
 
-Please note: we already added all required scripts and stylesheets to this repository. You only need to inject the address of your homeserver and the technical ID of the room you have set up for live blogging for it to show up in our modded Ghost theme.
+Please note: we already added all required scripts and stylesheets to this repository. You only need to inject the address of your homeserver and the technical ID of the room you have set up for live blogging so that it shows up in our modded Ghost theme.
 
 To embedd a live preview of your Matrix room, use the side-wide code injection tool in settings. Insert your homeserver's address and your technical room ID into this script and copy it to the Site Footer:
 
@@ -28,6 +29,8 @@ To embedd a live preview of your Matrix room, use the side-wide code injection t
     $('#matrix').append('<matrix-live homeserver="https://your-matrix-homeserver.org" room="!your-room-ID-wdRDQ:your-matrix-homeserver.org" initial-load="60"></matrix-live>');
 </script>
 ```
+
+We encourage you to copy, adapt, share and re-distribute!
 
 # Copyright & License
 
