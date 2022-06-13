@@ -78,9 +78,12 @@
                             <p class="gh-signup-description">Follow the discussion on Matrix:</p>
                                 <div id="matrix"></div>
                         </div>
-                        <a href="https://matrix.org/" target="_blank">
-                            <img src="{{asset "images/matrix-logo.svg"}}" alt="Matrix" style="-webkit-filter: invert(100%); filter: invert(100%); width: 40%">
-                        </a>
+                        <div class="matrix">
+                            <a class="matrix-logo" href="https://matrix.org/" target="_blank">
+                                <img src="{{asset "images/matrix-logo.svg"}}" alt="Matrix" style="-webkit-filter: invert(100%); filter: invert(100%); width: 40%">
+                            </a>
+                            <div id="matrix-handle"></div>
+                        </div>
                     {{/if}}
                 </section>
 
