@@ -1,5 +1,5 @@
 {
-    "name": "journal",
+    "name": "term7",
     "description": "A Ghost theme",
     "version": "1.0.0",
     "engines": {
@@ -7,12 +7,12 @@
     },
     "license": "MIT",
     "author": {
-        "name": "Ghost Foundation",
-        "email": "hello@ghost.org",
-        "url": "https://ghost.org"
+        "name": "term7",
+        "email": "admin@term7.info",
+        "url": "https://term7.info"
     },
     "keywords": [
-        "ghost",
+        "term7",
         "theme",
         "ghost-theme"
     ],
