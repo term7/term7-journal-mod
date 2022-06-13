@@ -1,7 +1,7 @@
-# Journal
+# term7-journal-mod
 
-A newsletter theme for [Ghost](http://github.com/tryghost/ghost/). This is the latest development version of Journal, and only used for theme installation! If you're looking to contribute, head over to the main repository [here](https://github.com/TryGhost/Themes). If you're just looking to download the latest release, download the theme [here](https://github.com/TryGhost/Journal/archive/refs/heads/main.zip).
+A term7 theme based on a newsletter theme for [Ghost](http://github.com/tryghost/ghost/). This is a modded version of the original [Journal Ghost theme](https://github.com/tryghost/journal), and only used for theme installation!
 
 # Copyright & License
 
-Copyright (c) 2013-2022 Ghost Foundation - Released under the [MIT license](LICENSE).
+Copyright (c) 2013-2022 Ghost Foundation & term7 - Released under the [MIT license](LICENSE).
