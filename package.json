@@ -1,5 +1,5 @@
 {
-    "name": "term7",
+    "name": "term7-journal-mod",
     "description": "A Ghost theme",
     "version": "1.0.0",
     "engines": {
@@ -13,6 +13,7 @@
     },
     "keywords": [
         "term7",
+        "term7-journal-mod",
         "theme",
         "ghost-theme"
     ],
