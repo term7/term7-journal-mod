@@ -22,7 +22,7 @@ You can make your room either open for anyone to join, or configure it to be on 
 
 Please note: we already added all required scripts and stylesheets to this repository. You only need to inject the address of your homeserver and the technical ID of the room you have set up for live blogging so that it shows up in our modded Ghost theme.
 
-To embedd a live preview of your Matrix room, use the side-wide code injection tool in settings. Insert your homeserver's address and your technical room ID into this script and copy it to the Site Footer:
+To embedd a live preview of your Matrix room, use the side-wide code injection tool in settings (Ghost Admin). Insert your homeserver's address and your technical room ID into this script and copy it to the Site Footer:
 
 ```
 <script type="text/javascript">
@@ -30,6 +30,7 @@ To embedd a live preview of your Matrix room, use the side-wide code injection t
 </script>
 ```
 
+Thats it.
 We encourage you to copy, adapt, share and re-distribute!
 
 # Copyright & License
