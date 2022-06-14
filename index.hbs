@@ -75,14 +75,17 @@
 
                     {{^if @member.paid}}
                         <div class="gh-signup">
-                            <p class="gh-signup-description">Follow the discussion on Matrix:</p>
-                                <div id="matrix"></div>
+                            <p class="gh-signup-description">Follow the discussion here. Contact us on Matrix:</p>
+                               <div class="matrix">
+                                <a class="element-logo" href="https://app.element.io" target="_blank">
+                                    <img src="{{asset "images/element-logo.svg"}}" alt="Element">
+                                </a>
+                                <a class="matrix-logo" href="https://matrix.org/" target="_blank">
+                                    <img src="{{asset "images/matrix-logo.svg"}}" alt="Matrix" style="filter: brightness(0) invert(1);">
+                                </a>
+                                <div id="matrix-handle"></div>
                         </div>
-                        <div class="matrix">
-                            <a class="matrix-logo" href="https://matrix.org/" target="_blank">
-                                <img src="{{asset "images/matrix-logo.svg"}}" alt="Matrix" style="-webkit-filter: invert(100%); filter: invert(100%);">
-                            </a>
-                            <div id="matrix-handle"></div>
+                        <div id="matrix"></div>
                         </div>
                     {{/if}}
                 </section>
