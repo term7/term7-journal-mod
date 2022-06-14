@@ -323,12 +323,16 @@ footer a,
     to   { opacity: 1; }
 }
 .matrix {
-    border-top: solid 1px #bcbcbc;
-    margin-top: 10px;
+    border-bottom: solid 1px #bcbcbc;
+    margin-top: 20px;
+    margin-left: 5px;
 }
 .matrix-logo {
-    float: left;
+    display: inline-block;
+    width: 35%;
 }
 #matrix-handle {
-    float: right;
+    font-weight: 600;
+    font-size: 15px;
+    margin-bottom: 10px;
 }
