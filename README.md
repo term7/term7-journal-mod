@@ -27,10 +27,13 @@ To embedd a live preview of your Matrix room, use the side-wide code injection t
 
 ```
 <script type="text/javascript">
+    $('.matrix-access').append('/ -> invite only ...');
     $('#matrix').append('<matrix-live homeserver="https://matrix-homeserver.org" room="!your-room-ID-wdRDQ:matrix-homeserver.org" initial-load="60"></matrix-live>');
     $('#matrix-handle').append('@matrix-username:matrix-homeserver.org');
 </script>
 ```
+
+In <i>.matrix-access</i> you can define wether or not your Matrix Live Blog is open to the public.
 
 Thats it.<br>
 We encourage you to copy, adapt, share and re-distribute!
