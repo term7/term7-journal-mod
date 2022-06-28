@@ -39,7 +39,7 @@ To include links to your Github page and to your Mastodon account, add the follo
 
 ```
     $('.gh-author-github').attr('href', 'https://github.com/your-username?tab=repositories');
-    $('gh-author-mastodon').attr('href', 'https://your-mastodon-server/@your-username');
+    $('.gh-author-mastodon').attr('href', 'https://your-mastodon-server/@your-username');
 ```
 
 
