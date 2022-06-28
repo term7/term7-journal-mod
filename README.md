@@ -33,6 +33,16 @@ To embedd a live preview of your Matrix room, use the side-wide code injection t
 </script>
 ```
 
+# Github & Mastodon
+
+To include links to your Github page and to your Mastodon account, add the following two lines to the javascript in the Site Footer:
+
+```
+    $('.gh-author-github').attr('href', 'https://github.com/your-username?tab=repositories');
+    $('gh-author-mastodon').attr('href', 'https://your-mastodon-server/@your-username');
+```
+
+
 In <i>.matrix-access</i> you can define wether or not your Matrix Live Blog is open to the public.
 
 Thats it.<br>
