@@ -28,6 +28,15 @@
                 <nav class="gh-head-menu">
                     {{navigation}}
                 </nav>
+
+                <div class="gh-head-actions">
+                    <a class="gh-author-github" target="_blank" rel="noopener">
+                        <img src="{{asset "images/github-logo.svg"}}" alt="Github">
+                    </a>
+                    <a class="gh-author-mastodon" rel="me" target="_blank">
+                        <img src="{{asset "images/mastodon-logo.svg"}}" alt="Mastodon">
+                    </a>
+                </div>
             </div>
         </header>
 
@@ -44,7 +53,7 @@
                 </nav>
 
                 <div class="gh-powered-by">
-                    <a href="https://github.com/term7/term7-journal-mod" target="_blank" rel="noopener">/ design / - term7-journal-mod</a>
+                    <a href="https://github.com/term7/term7-journal-mod" target="_blank" rel="noopener">/| design /| - term7-journal-mod</a>
                 </div>
             </div>
         </footer>
@@ -55,9 +64,9 @@
     {{/is}}
 
     <script src="{{asset "built/main.min.js"}}"></script>
-    <script src="{{asset "built/tweaks.min.js"}}"></script>
     <script src="{{asset "built/jquery-3.1.1.min.js"}}" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
     <script src="{{asset "built/matrix-live.min.js"}}"></script>
+    <script src="{{asset "built/tweaks.min.js"}}"></script>
 
     {{ghost_foot}}
 </body>
