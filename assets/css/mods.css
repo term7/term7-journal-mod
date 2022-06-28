@@ -1,6 +1,15 @@
 /* we decided not to touch the original design of the theme (screen.css)
 - instead of using the global code injection feature of Ghost, we added this stylesheet*/
 
+::selection {
+    color: red;
+    background: rgba(247,255,0,1);
+}
+a::selection {
+    color: rgba(247,255,0,1);
+    background: red;
+}
+
 body,
 .page-template .site-main, 
 .post-template .site-main,
@@ -16,9 +25,6 @@ body,
 }
 .gh-head-btn {
     color: #000000 !important;
-    display: none;
-}
-.gh-head-actions {
     display: none;
 }
 .gh-foot {
@@ -38,7 +44,8 @@ h1,
 h2,
 h3,
 .gh-article-excerpt,
-.gh-card-excerpt {
+.gh-card-excerpt,
+.kg-toggle-heading-text {
     color: #ffffff;
 }
 footer {
@@ -55,19 +62,66 @@ footer a,
 .gh-signup-description {
     font-size: small;
     border-bottom: solid 1px #bcbcbc;
-    padding-bottom: 5px;
+    padding-bottom: 10px;
     padding-left: 5px;
 }
 
-/* Matrix Live*/
+/* Github - Mastodon */
 
-#matrix {
-    margin-top: 10px;
-    border-top: solid 1px #bcbcbc;
+.gh-author-github {
+    margin-right: -20px !important;
+}
+.gh-author-mastodon {
+    margin-left: -20px !important;
+}
+@media (max-width: 990px) {
+    .gh-author-github,
+    .gh-author-mastodon {
+        display:flex; 
+        justify-content: center;
+        padding: 5px;
+    }
+    .gh-author-github {
+        margin-left: -30px !important;
+    }
+    .gh-author-mastodon {
+        margin-top: -32px !important;
+        margin-left: 30px !important;
+    }
 }
 
-.matrix-live-main {
-    width: 100%;
+/* Matrix Live */
+
+.element-logo {
+    padding-top: 10px;
+    width: 42px;
+    display: inline-block;
+}
+.matrix-logo {
+    padding-bottom: 10px;
+    padding-left: 5px;
+    display: inline-block;
+    height: 42px;
+}
+.matrix {
+    margin-top: 15px;
+    margin-bottom: 25px;
+}
+#matrix-handle {
+    font-weight: 600;
+    font-size: 15px;
+    margin-bottom: 10px;
+    padding-bottom: 20px;
+    border-bottom: solid 1px #bcbcbc;
+}
+#matrix {
+    margin-top: 15px;
+    border: solid 1px #bcbcbc;
+    border-radius: 20px;
+    background-color: rgba(255,255,255,0.1);
+    -moz-box-sizing: border-box !important;
+    -webkit-box-sizing: border-box !important;
+    box-sizing: border-box !important;
 }
 .matrix-live-loading-spinning {
     display: none;
@@ -94,7 +148,8 @@ footer a,
 }
 .matrix-live-entry {
     border-bottom: solid 1px #bcbcbc;
-    padding-bottom: 30px;
+    padding-top: 10px;
+    padding-bottom: 20px;
 }  
 .matrix-live-new {
     -webkit-animation: fadein 1s; /* Safari, Chrome and Opera > 12.1 */
@@ -104,6 +159,8 @@ footer a,
     animation: fadein 1s;
 }
 .matrix-live-entry-body {
+    border-left: solid 10px transparent;
+    border-right: solid 10px transparent;
     margin-top: 10px;
     margin-bottom: 10px;
 }
@@ -112,6 +169,23 @@ footer a,
 }
 .matrix-live-entry-body img {
     max-width: 100%;
+}
+.matrix-live-entry-body a {
+    line-break: strict;
+    background-color: rgba(255, 63, 159, 0.9);
+    box-sizing: border-box;
+    width: 100%;
+    border: solid 8px transparent;
+    margin-right: -16px;
+    margin-left: 0px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    display: inline-block;
+    font-weight: 600;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    border-radius: 20px;
+    color: #ffffff;
 }
 .matrix-live-entry-inline-viewer {
     text-align: center;
@@ -145,17 +219,17 @@ footer a,
 }
 .matrix-live-entry-author {
     font-size: smaller;
+    border-left: solid 10px transparent;
     color: #ff3f9f;
     display: inline;
     float: left;
-    padding: 2px;
 }
 .matrix-live-entry-time {
     font-size: smaller;
+    border-right: solid 10px transparent;
     color: #ff3f9f;
     display: inline;
     float: right;
-    padding: 2px;
 }
 .matrix-live-footer {
     text-align: right;
@@ -168,9 +242,15 @@ footer a,
 }
 .matrix-live-footer a {
     color: #ff3f9f;
-    padding-right: 4px;
+    border-right: solid 4px transparent;
 }
-  
+.matrix-live-footer,
+.matrix-live-error,
+.matrix-live-loading {
+    margin-left: 10px !important;
+    margin-right: 10px !important;
+} 
+
 /* Fadein setup */
  @keyframes fadein {
     from { opacity: 0; }
@@ -199,158 +279,9 @@ footer a,
 @-o-keyframes fadein {
     from { opacity: 0; }
     to   { opacity: 1; }
-}    
-.matrix-live-main {
-    width: 100%;
 }
-.matrix-live-loading-spinning {
-    display: none;
-}
-.matrix-live-loading {
-    font-size: smaller;
-    text-align: right;
-    color: #ff3f9f;
-    padding: 4px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    border: solid 1px #bcbcbc;
-    border-radius: 15px;
-}
-.matrix-live-loading-error {
-    color: #ff686e;
-}
-.matrix-live-error {
-    border-bottom-style: solid 1px #ff686e;  
-    padding-bottom: 30px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    color: #ff686e;
-}
-.matrix-live-entry {
-    border-bottom: solid 1px #bcbcbc;
-    padding-bottom: 30px;
-}  
-.matrix-live-new {
-     -webkit-animation: fadein 1s; /* Safari, Chrome and Opera > 12.1 */
-    -moz-animation: fadein 1s; /* Firefox < 16 */
-    -ms-animation: fadein 1s; /* Internet Explorer */
-    -o-animation: fadein 1s; /* Opera < 12.1 */
-    animation: fadein 1s;
-}
-.matrix-live-entry-body {
-     margin-top: 10px;
-    margin-bottom: 10px;
-}
-.matrix-live-entry-body p {
-    margin-bottom: 5px;
-}
-.matrix-live-entry-body img {
-    max-width: 100%;
-}
-.matrix-live-entry-inline-viewer {
-    text-align: center;
-}
-.matrix-live-entry-image {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    text-align: center;
-}
-.matrix-live-entry-image img {
-    max-width: 100%;
-}
-.matrix-live-entry-video {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    text-align: center;
-}
-.matrix-live-entry-video video {
-    max-width: 100%;
-}
-.matrix-live-entry-file {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    text-align: center;
-}
-.matrix-live-entry-file svg {
-    width: 32px;
-    max-width: 20%;
-    margin-right: 16px;
-    vertical-align: middle;
-}
-.matrix-live-entry-author {
-    font-size: smaller;
-    color: #ff3f9f;
-    display: inline;
-    float: left;
-    padding: 2px;
-}
-.matrix-live-entry-time {
-    font-size: smaller;
-    color: #ff3f9f;
-    display: inline;
-    float: right;
-    padding: 2px;
-}
-.matrix-live-footer {
-    text-align: right;
-    font-size: smaller;
-    padding: 4px;
-    margin-top: 20px;
-    margin-bottom: 10px;
-    border: solid 1px #bcbcbc;
-    border-radius: 15px;
-}
-.matrix-live-footer a {
-    color: #ff3f9f;
-    padding-right: 4px;
-}
-  
-  /* Fadein setup */
-  @keyframes fadein {
-      from { opacity: 0; }
-      to   { opacity: 1; }
-  }
-  
-/* Firefox < 16 */
-@-moz-keyframes fadein {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
-  
-/* Safari, Chrome and Opera > 12.1 */
-@-webkit-keyframes fadein {
-    from { opacity: 0; }
-    to   { opacity: 1; }
-}
-  
-/* Internet Explorer */
-@-ms-keyframes fadein {
-    from { opacity: 0; }
-    to   { opacity: 1; }
-}
-  
-/* Opera < 12.1 */
-    @-o-keyframes fadein {
-    from { opacity: 0; }
-    to   { opacity: 1; }
-}
-.matrix {
-    margin-top: 10px;
-    margin-left: 5px;
-}
-.element-logo {
-    padding-top: 10px;
-    width: 42px;
-    display: inline-block;
-}
-.matrix-logo {
-    padding-bottom: 10px;
-    padding-left: 5px;
-    display: inline-block;
-    height: 42px;
-}
-#matrix-handle {
-    font-weight: 600;
-    font-size: 15px;
-    margin-bottom: 10px;
+@media (max-width: 540px) {
+    .matrix-live-entry-body a {
+        line-break: anywhere;
+    }
 }
