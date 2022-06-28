@@ -69,23 +69,22 @@ footer a,
 /* Github - Mastodon */
 
 .gh-author-github {
-    margin-right: -20px !important;
+    margin-right: -12px !important;
 }
 .gh-author-mastodon {
-    margin-left: -20px !important;
+    margin-left: -12px !important;
 }
-@media (max-width: 990px) {
+@media (max-width: 991px) {
     .gh-author-github,
     .gh-author-mastodon {
         display:flex; 
         justify-content: center;
-        padding: 5px;
     }
     .gh-author-github {
-        margin-left: -30px !important;
+        margin-right: 30px !important;
     }
     .gh-author-mastodon {
-        margin-top: -32px !important;
+        margin-top: -23px !important;
         margin-left: 30px !important;
     }
 }
