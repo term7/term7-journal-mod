@@ -60,10 +60,9 @@ footer a,
 }
 
 .gh-signup-description {
+    margin-top: 20px;
     font-size: small;
-    border-bottom: solid 1px #bcbcbc;
-    padding-bottom: 10px;
-    padding-left: 5px;
+    padding-left: 10px;
 }
 
 /* Github - Mastodon */
@@ -103,15 +102,12 @@ footer a,
     height: 42px;
 }
 .matrix {
-    margin-top: 15px;
     margin-bottom: 25px;
 }
 #matrix-handle {
     font-weight: 600;
     font-size: 15px;
     margin-bottom: 10px;
-    padding-bottom: 20px;
-    border-bottom: solid 1px #bcbcbc;
 }
 #matrix {
     margin-top: 15px;
