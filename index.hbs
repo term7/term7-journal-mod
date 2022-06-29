@@ -56,42 +56,6 @@
             </section>
 
             <aside class="gh-sidebar">
-                <section class="gh-section">
-                    <h2 class="gh-section-title">About</h2>
-
-                    <div class="gh-about">
-                        {{#if @site.icon}}
-                            <img class="gh-about-icon" src="{{@site.icon}}" alt="{{@site.title}}">
-                        {{/if}}
-
-                        <section class="gh-about-wrapper">
-                            <h3 class="gh-about-title">{{@site.title}}</h3>
-
-                            {{#if @site.description}}
-                                <p class="gh-about-description">{{@site.description}}</p>
-                            {{/if}}
-                        </section>
-                    </div>
-
-                    {{^if @member.paid}}
-                        <div class="gh-signup">
-                            <p class="gh-signup-description">
-                                <strong>Contact us on Matrix!</strong>
-                                <br>Participate in the discussion <span class="matrix-access"></span>
-                            </p>
-                               <div class="matrix">
-                                <a class="element-logo" href="https://app.element.io" target="_blank">
-                                    <img src="{{asset "images/element-logo.svg"}}" alt="Element">
-                                </a>
-                                <a class="matrix-logo" href="https://matrix.org/" target="_blank">
-                                    <img src="{{asset "images/matrix-logo.svg"}}" alt="Matrix" style="filter: brightness(0) invert(1);">
-                                </a>
-                                <div id="matrix-handle"></div>
-                        </div>
-                        <div id="matrix"></div>
-                        </div>
-                    {{/if}}
-                </section>
 
                 {{#get "posts" filter="featured:true" limit="all" as |featured|}}
                     {{#if featured}}
@@ -123,6 +87,44 @@
                         </div>
                     </section>
                 {{/get}}
+
+                <section class="gh-section">
+                    <h2 class="gh-section-title">About</h2>
+
+                    <div class="gh-about">
+                        {{#if @site.icon}}
+                            <img class="gh-about-icon" src="{{@site.icon}}" alt="{{@site.title}}">
+                        {{/if}}
+
+                        <section class="gh-about-wrapper">
+                            <h3 class="gh-about-title">{{@site.title}}</h3>
+
+                            {{#if @site.description}}
+                                <p class="gh-about-description">{{@site.description}}</p>
+                            {{/if}}
+                        </section>
+                    </div>
+
+                    {{^if @member.paid}}
+                        <div class="gh-signup">
+                            <p class="gh-signup-description">
+                                <strong>Contact us on Matrix!</strong>
+                                <br>Participate in the discussion <span class="matrix-access"></span>
+                            </p>
+                            <div class="matrix">
+                                <a class="element-logo" href="https://app.element.io" target="_blank">
+                                    <img src="{{asset "images/element-logo.svg"}}" alt="Element">
+                                </a>
+                                <a class="matrix-logo" href="https://matrix.org/" target="_blank">
+                                    <img src="{{asset "images/matrix-logo.svg"}}" alt="Matrix" style="filter: brightness(0) invert(1);">
+                                </a>
+                                <div id="matrix-handle"></div>
+                            </div>
+                        <div id="matrix"></div>
+                        </div>
+                    {{/if}}
+                </section>
+
             </aside>
         </div>
     </div>
