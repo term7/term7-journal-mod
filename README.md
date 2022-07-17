@@ -25,26 +25,28 @@ It is up to you.
 
 Please note: because we want to avoid loading external sources, we already added all required scripts and stylesheets to this repository. This means you don't need to add the code as instucted in the Matrix Live tutorial. You only need to inject the address of your homeserver, together with the technical ID of the room you have set up for live blogging, so that it shows up in our modded Ghost theme.
 
-To embedd a live preview of your Matrix room, use the side-wide code injection tool in settings (Ghost Admin). Insert your homeserver's address, your technical room ID and your Matrix username into the script below, then copy it into the Site Footer:
+To embedd a live preview of your Matrix room, use the site-wide code injection tool in settings (Ghost Admin). Insert your homeserver's address instead of `matrix-homeserver.org`, your technical room ID instead of `!your-room-ID` and your Matrix username instead of `matrix-username` into the script below, then copy it into the Site Footer:
 
 ```
 <script type="text/javascript">
-    $('#matrix').append('<matrix-live homeserver="https://matrix-homeserver.org" room="!your-room-ID-wdRDQ:matrix-homeserver.org" initial-load="60"></matrix-live>');
+    $('#matrix').append('<matrix-live homeserver="https://matrix-homeserver.org" room="!your-room-ID:matrix-homeserver.org" initial-load="60"></matrix-live>');
     $('#matrix-handle').append('@matrix-username:matrix-homeserver.org');
     $('.matrix-access').append('/ -> invite only ...');
 </script>
 ```
 
+In <i>.matrix-access</i> you can for example define wether or not your Matrix Live Blog is open to the public.
+
 # Github & Mastodon
 
-To include links to your Github page and to your Mastodon account, add the following two lines to the javascript in the Site Footer:
+To include links to your Github page and to your Mastodon account, also add the following two lines to the javascript in the Site Footer:
 
 ```
-    $('.gh-author-github').attr('href', 'https://github.com/your-username?tab=repositories');
+    $('.gh-author-github').attr('href', 'https://github.com/your-username');
     $('.gh-author-mastodon').attr('href', 'https://your-mastodon-server/@your-username');
 ```
 
-In <i>.matrix-access</i> you can define wether or not your Matrix Live Blog is open to the public.
+Again, don't forget to change `your-username` and `your-mastodon-server` to the appropriate values!
 
 # AN IMPORTANT NOTICE ABOUT PRIVACY:
 
