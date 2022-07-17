@@ -59,7 +59,6 @@
 
                 <section class="gh-section">
                     <h2 class="gh-section-title">About</h2>
-
                     <div class="gh-about">
                         {{#if @site.icon}}
                             <img class="gh-about-icon" src="{{@site.icon}}" alt="{{@site.title}}">
@@ -110,10 +109,10 @@
                     <h2 class="gh-section-title">Matrix Live</h2>                            
                     <div class="matrix">
                         <a class="element-logo" href="https://app.element.io" target="_blank">
-                            <img src="{{asset "images/element-logo.svg"}}" alt="Element">
+                            {{> "icons/element"}}
                         </a>
                         <a class="matrix-logo" href="https://matrix.org/" target="_blank">
-                            <img src="{{asset "images/matrix-logo.svg"}}" alt="Matrix" style="filter: brightness(0) invert(1);">
+                            {{> "icons/matrix"}}
                         </a>
                         <div id="matrix-handle"></div>
                     </div>
