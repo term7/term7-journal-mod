@@ -54,14 +54,14 @@ This is a quote from Ghost's [privacy declaration](https://github.com/TryGhost/G
 
 <em>To easily load member functionality for membership features, Ghost leverages [UNPKG](https://unpkg.com) to provide a CDN for drop-in script known as Portal. If member signups are disabled, no CDN will be injected.</em>
 
-While this is true for the Portal, in order to serch posts, tags and authors, Ghost loads [UNPKG](https://unpkg.com) nevertheless to provide search functionality on the page. We removed all elements and buttons in out theme that are related to search functionality because we hoped in consequence the CDN also won't be anymore. However, the CDN still is injected into our website. If you look at the page source, it looks like this (the data key always is an individual key for each website):
+While this is true for the Portal, in order to serch posts, tags and authors, Ghost loads [UNPKG](https://unpkg.com) nevertheless to provide search functionality on the page. We removed all elements and buttons in our theme that are related to search functionality because we hoped in consequence the CDN also won't be injected anymore. However, the CDN still is injected into our website. If you look at the page source, it looks like this (the data key always is an individual key for each website):
 
 
 ```
 <script defer src="https://unpkg.com/@tryghost/sodo-search@~1.0.0/umd/sodo-search.min.js" data-sodo-search="https://journal.ghost.io/" data-version="1.0.0" data-key="77fa60d37b3ada6d747320b139" crossorigin="anonymous"></script>
 ```
 
-While search functionality is a nice feature, we don't like having to trust third parties. The injected CDN further loads another Javascript and additional CSS stylesheets. For privacy reasons want to serve all scripts, fonts, etc. locally.
+While search functionality is a nice feature, and even though UNPKG is an open source project, we don't like having to trust third parties. The injected CDN further loads additional resources (Javascript and CSS stylesheets), over which we have no direct control. For privacy reasons want to serve all scripts, fonts, etc. locally.
 
 In oder to stop loading [UNPKG](https://unpkg.com) you will have to host Ghost on your own VPS and change a configuration file. You can find instructions on how to install Ghost [here](https://ghost.org/docs/install/).
 Then, log into your VPS, enter the directory of your ghost installation and edit '/versions/5.x.x/core/shared/config/defaults.json', i.e.:
