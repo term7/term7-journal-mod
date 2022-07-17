@@ -61,7 +61,7 @@ While this is true for the Portal, in order to serch posts, tags and authors, Gh
 <script defer src="https://unpkg.com/@tryghost/sodo-search@~1.0.0/umd/sodo-search.min.js" data-sodo-search="https://journal.ghost.io/" data-version="1.0.0" data-key="77fa60d37b3ada6d747320b139" crossorigin="anonymous"></script>
 ```
 
-While search functionality is a nice feature, and even though UNPKG is an open source project, we don't like having to trust third parties. The injected CDN further loads additional resources (Javascript and CSS stylesheets), over which we have no direct control. For privacy reasons want to serve all scripts, fonts, etc. locally.
+While search functionality is a nice feature, and even though UNPKG is an open source project, we don't like having to trust third parties. UNPKG still is powered by Cloudflare... The injected CDN further loads additional resources (Javascript and CSS stylesheets), over which we have no direct control. For privacy reasons want to serve all scripts, fonts, etc. locally.
 
 In oder to stop loading [UNPKG](https://unpkg.com) you will have to host Ghost on your own VPS and change a configuration file. You can find instructions on how to install Ghost [here](https://ghost.org/docs/install/).
 Then, log into your VPS, enter the directory of your ghost installation and edit '/versions/5.x.x/core/shared/config/defaults.json', i.e.:
