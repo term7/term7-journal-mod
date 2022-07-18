@@ -3,13 +3,13 @@
 This is a modded version of the original [Journal theme](https://github.com/tryghost/journal) for [Ghost](https://github.com/tryghost/ghost/), and only used for theme installation!<br>
 If you're looking to contribute to Ghost, head over to the main repository [here](https://github.com/TryGhost/Themes).
 
-[Ghost](https://github.com/tryghost/ghost/) advertises the ability to grow the audience of a website into a business. It makes use of Stripe as a payment system and Mailgun as a newsletter provider. With Ghost it is easy to implement a professional newsletter and subscription based content to earn recurring revenue. We don't want to use these features, because we run a site focused on privacy and implementing them would require us to trust third parties with visitor data.
+[Ghost](https://github.com/tryghost/ghost/) advertises the ability to grow the audience of a website into a business. It makes use of [Stripe](https://stripe.com/en-gb-us) as a payment system, [UNPKG](https://unpkg.com) as a CDN to enable Portal login & registrations, as well as [Mailgun](https://www.mailgun.com/) as a newsletter provider. With Ghost it is easy to implement a professional newsletter and subscription based content to earn recurring revenue. We don't want to use these features, because we run a site focused on privacy and implementing them would require us to trust third parties with visitor data.
 
 #### IMPORTANT CHANGES:
 
 - We removed the portal with all its signup and subscription options: no newsletter, no subscription based content
-- We removed the search functionality because it leverages a third party service: [UNPKG](https://unpkg.com)
-- We removed content related to twitter and facebook
+- We removed the search functionality
+- We removed content related to Twitter and Facebook
 - We changed the copyright from © to /| copyme /|
 - We added a hook for Matrix Live
 - We added jQuery (necessary for Matrix Live)
@@ -48,13 +48,13 @@ To include links to your Github page and to your Mastodon account, also add the 
 
 Again, don't forget to change `your-username` and `your-mastodon-server` to the appropriate values!
 
-# AN IMPORTANT NOTICE ABOUT PRIVACY:
+# AN IMPORTANT NOTICE ABOUT PRIVACY
 
 This is a quote from Ghost's [privacy declaration](https://github.com/TryGhost/Ghost/blob/main/PRIVACY.md):
 
 <em>To easily load member functionality for membership features, Ghost leverages [UNPKG](https://unpkg.com) to provide a CDN for drop-in script known as Portal. If member signups are disabled, no CDN will be injected.</em>
 
-While this is true for the Portal, in order to serch posts, tags and authors, Ghost loads UNPKG nevertheless to provide search functionality on the page. We removed all elements and buttons in our theme that are related to search functionality because we hoped in consequence the CDN also won't be injected anymore. However, the CDN still is injected into our website. If you look at the page source, it looks like this (the data key always is an individual key for each website):
+While this is true for the Portal, in order to search posts, tags and authors, Ghost loads UNPKG nevertheless to provide search functionality on the page. We removed all elements and buttons in our theme design that are related to search functionality because we hoped in consequence the CDN also won't be injected anymore. However, the CDN still is injected into our website. If you look at the page source, it looks like this (the data key always is an individual key for each website):
 
 
 ```
@@ -63,7 +63,8 @@ While this is true for the Portal, in order to serch posts, tags and authors, Gh
 
 While search functionality is a nice feature, and even though UNPKG is an open source project, we don't like having to trust third parties. UNPKG still is powered by [Cloudflare](https://www.cloudflare.com/en-gb/privacypolicy/)... The injected CDN further loads additional resources (Javascript and CSS stylesheets), over which we have no direct control. For privacy reasons we want to serve all scripts, fonts, etc. locally.
 
-In oder to stop loading [UNPKG](https://unpkg.com) you will have to host Ghost on your own VPS and change a configuration file. You can find instructions on how to install Ghost [here](https://ghost.org/docs/install/).<br>
+In oder to stop loading [UNPKG](https://unpkg.com) you will have to host Ghost on your own VPS and change a configuration file. You can find instructions on how to install Ghost [here](https://ghost.org/docs/install/).
+
 Then, log into your VPS, enter the directory of your ghost installation and edit '/versions/5.x.x/core/shared/config/defaults.json', i.e.:
 
 `cd /var/www/ghost`<br>
