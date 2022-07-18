@@ -124,10 +124,36 @@ footer a,
     -moz-box-sizing: border-box !important;
     -webkit-box-sizing: border-box !important;
     box-sizing: border-box !important;
+    position: relative;
 }
 #matrix::-webkit-scrollbar {
     display: none;
-  }
+}
+
+/* Tooltip text */
+#matrix .tooltip{
+    opacity: 0;
+    transition: opacity 1s;
+    width: 100%;
+    height: 50px;
+    background-color: #ffffff;
+    color: #000000;
+    font-weight: 900;
+    text-align: center;
+    position: absolute;
+    justify-content: center;
+    white-space: normal;
+    word-break: break-word;
+    display: flex;
+    align-items: center;
+    z-index: 1;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+#matrix:hover .tooltip {
+    opacity: 1;
+}
+
 .matrix-live-loading-spinning {
     display: none;
 }
