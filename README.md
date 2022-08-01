@@ -52,32 +52,36 @@ Again, don't forget to change `your-username` and `your-mastodon-server` to the 
 
 This is a quote from Ghost's [privacy declaration](https://github.com/TryGhost/Ghost/blob/main/PRIVACY.md):
 
-<em>To easily load member functionality for membership features, Ghost leverages [UNPKG](https://unpkg.com) to provide a CDN for drop-in script known as Portal. If member signups are disabled, no CDN will be injected.</em>
+<em>To easily load functionality for membership features & search, Ghost leverages [JSDELIVER](https://unpkg.com) to provide a CDN for drop-in scripts.</em>
 
-While this is true for the Portal, in order to search posts, tags and authors, Ghost loads UNPKG nevertheless to provide search functionality on the page. We removed all elements and buttons in our theme design that are related to search functionality because we hoped in consequence the CDN also won't be injected anymore. However, the CDN still is injected into our website. If you look at the page source, it looks like this (the data key always is an individual key for each website):
+Even if you don't use functionality like the Signup Portal, in order to search posts, tags and authors, Ghost loads JSDELIVER nevertheless to provide search functionality on the page. We removed all elements and buttons in our theme design that are related to search functionality because we hoped in consequence the CDN also won't be injected anymore. However, the CDN still is injected into our website. If you look at the page source, it looks like this (the data key always is an individual key for each website):
 
 
 ```
-<script defer src="https://unpkg.com/@tryghost/sodo-search@~1.0.0/umd/sodo-search.min.js" data-sodo-search="https://journal.ghost.io/" data-version="1.0.0" data-key="77fa60d37b3ada6d747320b139" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/@tryghost/sodo-search@~1.1/umd/sodo-search.min.js" data-key="77fa60d37b3ada6d747320b139" data-styles="https://cdn.jsdelivr.net/npm/@tryghost/sodo-search@~1.1/umd/main.css" data-sodo-search="https://term7.info/" crossorigin="anonymous"></script>
 ```
 
-While search functionality is a nice feature, and even though UNPKG is an open source project, we don't like having to trust third parties. UNPKG still is powered by [Cloudflare](https://www.cloudflare.com/en-gb/privacypolicy/)... The injected CDN further loads additional resources (Javascript and CSS stylesheets), over which we have no direct control. For privacy reasons we want to serve all scripts, fonts, etc. locally.
+While search functionality is a nice feature, and even though JSDELIVER is an open source project that is for example used by Modilla, we still don't like having to trust third parties. Our site is small enough that it does not need a CDN. To see how JSDELIVER works, check out their own [Infographic](https://www.jsdelivr.com/network/infographic). There you also see how 3rd parties are involved... The injected CDN further loads additional resources (Javascript and CSS stylesheets), over which we have no direct control. For privacy reasons we want to serve all scripts, fonts, etc. locally.
 
-In oder to stop loading [UNPKG](https://unpkg.com) you will have to host Ghost on your own VPS and change a configuration file. You can find instructions on how to install Ghost [here](https://ghost.org/docs/install/).
+In oder to stop loading [JSDELIVER](https://www.jsdelivr.com/) you will have to host Ghost on your own VPS and change a configuration file. You can find instructions on how to install Ghost [here](https://ghost.org/docs/install/).
 
 Then, log into your VPS, enter the directory of your ghost installation and edit '/versions/5.x.x/core/shared/config/defaults.json', i.e.:
 
 `cd /var/www/ghost`<br>
-`nano versions/5.4.0/core/shared/config/defaults.json`
+`nano versions/5.7.0/core/shared/config/defaults.json`
 
 Delete these lines:
 
 ```
 "sodoSearch": {
-    "url": "https://unpkg.com/@tryghost/sodo-search@~1.0.0/umd/sodo-search.min.js",
-    "version": "1.0.0"
+    "url": "https://cdn.jsdelivr.net/npm/@tryghost/sodo-search@~{version}/umd/sodo-search.min.js",
+    "styles": "https://cdn.jsdelivr.net/npm/@tryghost/sodo-search@~{version}/umd/main.css",
+    "version": "1.1"
 },
 ```
+
+You could as well delete all configuration lines that load external URL's. It is up to you!<br>
+In our experience it has been good enough to only delete the lines related to <em>sodoSearch</em>...
 
 Then restart Ghost:
 
