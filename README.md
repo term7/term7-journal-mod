@@ -87,7 +87,7 @@ Then restart Ghost:
 
 `ghost restart`
 
-Unfortunately we relised that starting with Ghost version 5.5.0 (which is when Ghost changed from UNPKG to JSDELIVR), deleting these lines will break Ghost. Code injection in the site header stopped working...
+Unfortunately we relised that starting with Ghost version 5.5.0 (which is when Ghost changed from UNPKG to JSDELIVR), deleting these lines will break Ghost. I.e. code injection in the site header stopped working...
 Until this issue is resolved we recommend to revert the update to Ghost Version 5.4.0 with these commands:
 
 `cd /var/www/ghost`<br>
@@ -104,7 +104,7 @@ And delete these lines:
 "sodoSearch": {
     "url": "https://unpkg.com/@tryghost/sodo-search@~1.0.0/umd/sodo-search.min.js",
     "version": "1.0.0"
-    },
+},
 ```
 
 Thats it.<br>
