@@ -61,16 +61,17 @@ Even if you don't use functionality like the Signup Portal, in order to search p
 <script defer src="https://cdn.jsdelivr.net/npm/@tryghost/sodo-search@~1.1/umd/sodo-search.min.js" data-key="77fa60d37b3ada6d747320b139" data-styles="https://cdn.jsdelivr.net/npm/@tryghost/sodo-search@~1.1/umd/main.css" data-sodo-search="https://term7.info/" crossorigin="anonymous"></script>
 ```
 
-While search functionality is a nice feature, and even though JSDELIVER is an open source project that is for example used by Modilla, we still don't like having to trust third parties. Our site does not need a CDN. To see how JSDELIVER works, check out their own [Infographic](https://www.jsdelivr.com/network/infographic). There you also see in which way 3rd parties are integrated... The injected CDN further loads additional resources (Javascript and CSS stylesheets), over which we have no direct control. For privacy reasons we want to serve all scripts, fonts, etc. locally.
+While search functionality is a nice feature (at the very latest when the content on your site grows), and even though JSDELIVER is an open source project that is for example used by Modzilla, we still don't like having to trust third parties. Our site does not need a CDN. To see how JSDELIVER works, check out their own [Infographic](https://www.jsdelivr.com/network/infographic). There you also see in which way 3rd parties are integrated... The injected CDN further loads additional resources (Javascript and CSS stylesheets), over which we have no direct control. We do believe JSDELIVR is a good project, but eventually there always is trust involved if you integrate 3rd party scripts that will be updated by this 3rd party and thus automatically integrated into your installation (to improve the software, make it more secure, eliminate bugs, etc.). For privacy reasons we want to serve all scripts, fonts, etc. locally.
+However a CDN can make a lot of sense when you run a website that has a lot of traffic, if you want to have subscribers to your content, implement a newsletter, etc. In this case we recommend you use the standard installation of ghost and don't temper with its core configuration.
 
-In oder to stop loading [JSDELIVER](https://www.jsdelivr.com/) you will have to host Ghost on your own VPS and change a configuration file. You can find instructions on how to install Ghost [here](https://ghost.org/docs/install/).
+If you do want to stop loading [JSDELIVER](https://www.jsdelivr.com/) you will have to host Ghost on your own VPS and change a configuration file. You can find instructions on how to install Ghost [here](https://ghost.org/docs/install/).
 
-Then, log into your VPS, enter the directory of your ghost installation and edit '/versions/5.7.0/core/shared/config/defaults.json', i.e.:
+Then, log into your VPS, enter the directory of your ghost installation and edit '/versions/5.x.x/core/shared/config/defaults.json', i.e.:
 
 `cd /var/www/ghost`<br>
-`nano versions/5.7.0/core/shared/config/defaults.json`
+`nano versions/5.x.x/core/shared/config/defaults.json`
 
-Delete these lines:
+Change these lines:
 
 ```
 "sodoSearch": {
@@ -80,34 +81,34 @@ Delete these lines:
 },
 ```
 
-You could as well delete all configuration lines that load external URL's. It is up to you!<br>
-In our experience it has been good enough to only delete the lines related to <em>sodoSearch</em>...
+To:
+
+```
+"sodoSearch": {
+    "url": "",
+    "styles": "",
+    "version": "1.1"
+},
+```
+
+That way you could as well stop loading i.e. scripts related to <em>portal</em>. It is up to you!<br>
 
 Then restart Ghost:
 
 `ghost restart`
 
-Unfortunately we relised that starting with Ghost version 5.5.0 (which is when Ghost changed from UNPKG to JSDELIVR), deleting these lines will break Ghost. I.e. code injection in the site header stopped working...
-Until this issue is resolved we recommend to revert the update to Ghost Version 5.4.0 with these commands:
-
-`cd /var/www/ghost`<br>
-`rm -R versions*`<br>
-`ghost update 5.4.0 --force`
-
-Then in order to stop UNPKG CDN from being injected, edit <em>defaults.json</em>:
-
-`nano versions/5.4.0/core/shared/config/defaults.json`
-
-And delete these lines:
+This is a bit of a hacky approach. Alternatively you could download the required sources and host them on your own server. Replace the links in your configuration file accordingly:
 
 ```
 "sodoSearch": {
-    "url": "https://unpkg.com/@tryghost/sodo-search@~1.0.0/umd/sodo-search.min.js",
-    "version": "1.0.0"
-},
+  "scriptUrl": "/assets/sodo-xxx.js",
+  "styles": "/assets/sodo-xxx.css"
+}
 ```
 
 Thats it.<br>
+But keep in mind that for security reasons it is good practice to check your installation and update on a regular basis!
+
 We encourage you to copy, adapt, share and re-distribute!
 
 # Copyright & License
