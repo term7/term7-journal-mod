@@ -69,45 +69,40 @@ If you do want to stop loading [JSDELIVER](https://www.jsdelivr.com/) you will h
 Then, log into your VPS, enter the directory of your ghost installation and edit '/versions/5.x.x/core/shared/config/defaults.json', i.e.:
 
 `cd /var/www/ghost`<br>
-`nano versions/5.x.x/core/shared/config/defaults.json`
+`nano config.production.json`
 
-Change these lines:
-
-```
-"sodoSearch": {
-    "url": "https://cdn.jsdelivr.net/npm/@tryghost/sodo-search@~{version}/umd/sodo-search.min.js",
-    "styles": "https://cdn.jsdelivr.net/npm/@tryghost/sodo-search@~{version}/umd/main.css",
-    "version": "1.1"
-},
-```
-
-To:
+To disable all features that rely on JSDELIVR these lines:
 
 ```
-"sodoSearch": {
-    "url": "",
-    "styles": "",
-    "version": "1.1"
-},
+  "portal": {
+    "url": ""
+  },
+  "sodoSearch": {
+    "url": ""
+  },
+  "comments": {
+    "url": ""
+  },
+  "editor": {
+    "url": ""
+  }
 ```
 
-That way you could as well stop loading i.e. scripts related to <em>portal</em>. It is up to you!<br>
+Here you can also disable other functions that are enabled by default and outlined in Ghost's [privacy declaration](https://github.com/TryGhost/Ghost/blob/main/PRIVACY.md).<br>
+It is up to you!
+
+```
+  "privacy": {
+    "useUpdateCheck": false,
+    "useGravatar": false,
+    "useRpcPing": false,
+    "useStructuredData": false
+  },
+```
 
 Then restart Ghost:
 
 `ghost restart`
-
-This is a bit of a hacky approach. Alternatively you could download the required sources and host them on your own server. Replace the links in your configuration file accordingly:
-
-```
-"sodoSearch": {
-  "scriptUrl": "/assets/sodo-xxx.js",
-  "styles": "/assets/sodo-xxx.css"
-}
-```
-
-Thats it.<br>
-But keep in mind that for security reasons it is good practice to check your installation and update on a regular basis!
 
 We encourage you to copy, adapt, share and re-distribute!
 
