@@ -5,7 +5,12 @@ html {
     scroll-behavior: smooth;
     -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
-
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  } 
+  
 ::selection {
     color: #0000ff;
     background: #ffffff;
@@ -65,6 +70,11 @@ footer a,
     color: #bcbcbc !important;
 }
 
+.kg-bookmark-container {
+    border-radius: 10px !important;
+    border: solid 1px #bcbcbc !important;
+}
+
 .gh-signup-description {
     margin-top: 20px;
     font-size: small;
@@ -77,13 +87,18 @@ footer a,
 .gh-navigation-title {
     color: #ffffff !important;
 }
+.scroll-banner {
+    margin-bottom: -16px !important;
+} 
 
 /* Github - Mastodon */
 
 .gh-author-github {
+    cursor: pointer;
     margin-right: -5px !important;
 }
 .gh-author-mastodon {
+    cursor: pointer;
     margin-left: -5px !important;
 }
 @media (max-width: 991px) {
@@ -136,6 +151,53 @@ footer a,
     #scrolltop {
         bottom: 50vh;
     }
+}
+
+/* Code Snippets */
+
+pre {
+    padding: 1.6rem !important;
+    overflow: hidden !important;
+    border-radius: 15px !important;
+}
+code {
+    display: flex;
+    align-items: center;
+    width: 100% !important;
+    color: #fb00ff !important;
+    overflow-x: scroll !important;
+    scrollbar-width: none;
+    scrollbar-color: transparent transparent;
+}
+code::selection {
+    color: #ffffff !important;
+    background-color: #fb00ff;
+}
+.shortcode {
+    overflow-x: hidden !important;
+}
+.snippet {
+    color: #fb00ff !important;
+}
+.snippet .clip {
+    float: right;
+    top: 22px;
+    right: 2px;
+    margin-bottom: -27px;
+}
+.clip {
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 20px;
+    white-space: nowrap;
+    cursor: pointer;
+    background-color: transparent !important;
+    border: none !important;
+}
+.clippy {
+    margin-top: -9px;
+    position: relative;
+    top: 3px;
 }
 
 
