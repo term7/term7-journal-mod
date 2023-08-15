@@ -1,5 +1,7 @@
 /* we decided not to touch the original design of the theme (screen.css)
-- instead of using the global code injection feature of Ghost, we added this stylesheet*/
+- instead of using the global code injection feature of Ghost, we added this stylesheet */
+
+/* Layout and Style Tweaks and Overrides */
 
 html {
     scroll-behavior: smooth;
@@ -9,8 +11,12 @@ html {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  } 
-  
+}
+
+:root {
+    color-scheme: only light;
+}
+
 ::selection {
     color: #0000ff;
     background: #ffffff;
@@ -31,16 +37,6 @@ body,
     color: #fb00ff;
 }
 
-#gh-head .gh-icon-btn {
-    display: none !important;
-}
-
-.gh-head-btn {
-    color: #000000 !important;
-}
-.gh-foot {
-    background-color: #ffffff;
-}
 .gh-foot-menu a {
     color: #000000 !important;
     font-weight: 600;
@@ -59,6 +55,23 @@ h3,
 .kg-toggle-heading-text {
     color: #ffffff;
 }
+
+#gh-head .gh-icon-btn {
+    display: none !important;
+}
+
+.gh-head-btn {
+    color: #000000 !important;
+}
+.gh-foot {
+    background-color: #ffffff;
+}
+.gh-navigation-next {
+    margin-right: -15px;
+}
+.gh-navigation-previous {
+    margin-left: -15px;
+}
 footer {
     padding-top: 10px !important;
     padding-bottom: 10px !important;
@@ -70,9 +83,34 @@ footer a,
     color: #bcbcbc !important;
 }
 
-.kg-bookmark-container {
+.gh-summary {
+    margin-bottom: 6.4rem;
+}
+.gh-wrapper {
+    grid-template-columns: fit-content(4fr) 2fr !important;
+}
+.gh-post-content {
+    grid-template-columns: 1fr !important;
+}
+.gh-post-content,
+.kg-card {
+    overflow-wrap: anywhere !important;
+    word-break: normal !important;
+}
+.kg-card {
+    overflow: hidden !important;
+}
+.kg-header-card {
+    border-radius: 10px !important;
+}
+.kg-file-card-container {
     border-radius: 10px !important;
     border: solid 1px #bcbcbc !important;
+}
+.kg-bookmark-container {
+    border-radius: 10px !important;
+    background-color: #ffffff !important;
+    color: #333333 !important;
 }
 
 .gh-signup-description {
@@ -87,9 +125,6 @@ footer a,
 .gh-navigation-title {
     color: #ffffff !important;
 }
-.scroll-banner {
-    margin-bottom: -16px !important;
-} 
 
 /* Github - Mastodon */
 
@@ -123,17 +158,16 @@ footer a,
 
 #scrolltop {
     mix-blend-mode: difference !important;
-    width: 210px;
-    height: 297px;
+    width: 150px;
+    height: 212px;
     display: block;
     visibility: hidden;
     opacity: 1;
     transition: visibility 0s, opacity 1s ease-in;
     position: fixed;
     left: 50%;
-    margin-left: -105px;
-    bottom: 50%;
-    margin-bottom: -149px;
+    margin-left: -75px;
+    margin-bottom: -106px;
     z-index: 2;
 }
 .top-button {
@@ -141,15 +175,30 @@ footer a,
     cursor: pointer;
 }
 
+@media (min-width: 991px) {
+    #scrolltop {
+        bottom: 57%;
+    }
+    .scroll-banner {
+        margin-bottom: 35px !important;
+    }
+}
+
 @media (max-width: 768px) {
     #scrolltop {
         bottom: 50vh;
+    }
+    .scroll-banner {
+        margin-bottom: 5px !important;
     }
 }
 
 @media (max-width: 991px) {
     #scrolltop {
         bottom: 50vh;
+    }
+    .scroll-banner {
+        margin-bottom: 5px !important;
     }
 }
 
@@ -222,7 +271,7 @@ code::selection {
 }
 #matrix {
     margin-top: 15px;
-    max-height: 700px;
+    max-height: 530px;
     overflow-y: scroll;
     overflow-x: hidden;
     -ms-overflow-style: none;  /* IE and Edge */
