@@ -13,6 +13,7 @@ If you're looking to contribute to Ghost, head over to the main repository [here
 - We changed the copyright from © to /| copyme /|
 - We added a hook for Matrix Live
 - We added jQuery (necessary for Matrix Live)
+- We created a custom dynamic tags.hbs and edited routes.yaml to create an overview page for all tags used in posts
 
 
 # Matrix Live
@@ -47,6 +48,28 @@ To include links to your Github page and to your Mastodon account, also add the 
 ```
 
 Again, don't forget to change `your-username` and `your-mastodon-server` to the appropriate values!
+
+# Custom Tags Page
+
+To include a custom dynamic tags page, we created [tags.hbs](tags.hbs) as a modified version of [default.hbs](default.hbs) and edited our `routes.yaml` to look like this:
+
+```
+    routes:
+      /tags/: tags
+    
+    collections:
+      /:
+        permalink: /{slug}/
+        template: index
+    
+    taxonomies:
+      tag: /tag/{slug}/
+      author: /author/{slug}/
+```
+
+If you want to show an overview of all tags used on your page on an overview page, download and edit `routes.yaml` from your Ghost Publishing Settings - Labs Page to add `tags` to your `routes` (at the bottom of `https://your-domain-name/ghost/#/settings/labs`). Then upload your modified version of `routes.yaml`.
+
+To include tags into your page navigation, you then just need to add it in your Ghost Publishing Settings - Navigation Page page as `https://your-domain-name/tags/`
 
 # AN IMPORTANT NOTICE ABOUT PRIVACY
 
