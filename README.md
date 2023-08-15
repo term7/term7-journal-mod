@@ -54,17 +54,17 @@ Again, don't forget to change `your-username` and `your-mastodon-server` to the 
 To include a custom dynamic tags page, we created [tags.hbs](tags.hbs) as a modified version of [default.hbs](default.hbs) and edited our `routes.yaml` to look like this:
 
 ```
-    routes:
-      /tags/: tags
-    
-    collections:
-      /:
-        permalink: /{slug}/
-        template: index
-    
-    taxonomies:
-      tag: /tag/{slug}/
-      author: /author/{slug}/
+routes:
+  /tags/: tags
+
+collections:
+  /:
+    permalink: /{slug}/
+    template: index
+
+taxonomies:
+  tag: /tag/{slug}/
+  author: /author/{slug}/
 ```
 
 If you want to show an overview of all tags used on your page on an overview page, download and edit `routes.yaml` from your Ghost Publishing Settings - Labs Page to add `tags` to your `routes` (at the bottom of `https://your-domain-name/ghost/#/settings/labs`). Then upload your modified version of `routes.yaml`.
