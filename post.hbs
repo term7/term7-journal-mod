@@ -2,76 +2,114 @@
 
 {{#post}}
 
-<main id="gh-main" class="gh-main">
-    <article class="gh-article {{post_class}}">
-        <header class="gh-article-header gh-canvas">
-            {{#is "post"}}
-                <span class="gh-article-meta">
-                    {{#primary_author}}By <a href="{{url}}">{{name}}</a>{{/primary_author}}
-                    {{#if primary_tag}}
-                        in
-                        <a class="gh-article-tag" href="{{primary_tag.url}}">{{primary_tag.name}}</a>
-                    {{/if}}
-                    —
-                    <time datetime="{{date format="YYYY-MM-DD"}}">{{date}}</time>
-                </span>
-            {{/is}}
+<main id="gh-main" class="gh-main gh-outer">
 
-            <h1 class="gh-article-title">{{title}}</h1>
+    <div class="gh-inner">
 
-            {{#if custom_excerpt}}
-                <p class="gh-article-excerpt">{{custom_excerpt}}</p>
-            {{/if}}
+        <article class="gh-article gh-latest {{post_class}}">
+            <header class="gh-article-header">
+                {{#is "post"}}
+                    <span class="gh-article-meta">
+                        {{#primary_author}}By <a href="{{url}}">{{name}}</a>{{/primary_author}}
+                        {{#if primary_tag}}
+                            in
+                            <a class="gh-article-tag" href="{{primary_tag.url}}">{{primary_tag.name}}</a>
+                        {{/if}}
+                        —
+                        <time datetime="{{date format="YYYY-MM-DD"}}">{{date}}</time>
+                    </span>
+                {{/is}}
 
-            {{#if feature_image}}
-                <figure class="gh-article-image">
-                    <img
-                        srcset="{{img_url feature_image size="s"}} 300w,
-                                {{img_url feature_image size="m"}} 720w,
-                                {{img_url feature_image size="l"}} 960w,
-                                {{img_url feature_image size="xl"}} 1200w,
-                                {{img_url feature_image size="xxl"}} 2000w"
-                        sizes="(max-width: 1200px) 100vw, 1200px"
-                        src="{{img_url feature_image size="xl"}}"
-                        alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
-                    >
-                    {{#if feature_image_caption}}
-                        <figcaption>{{feature_image_caption}}</figcaption>
-                    {{/if}}
-                </figure>
-            {{/if}}
-        </header>
+                <h1 class="gh-article-title">{{title}}</h1>
 
-        <div class="gh-content gh-canvas">
-            {{content}}
+                {{#if custom_excerpt}}
+                    <p class="gh-article-excerpt">{{custom_excerpt}}</p>
+                {{/if}}
+
+                {{#if feature_image}}
+                    <figure class="gh-article-image">
+                        <img
+                            srcset="{{img_url feature_image size="s"}} 300w,
+                                    {{img_url feature_image size="m"}} 720w,
+                                    {{img_url feature_image size="l"}} 960w,
+                                    {{img_url feature_image size="xl"}} 1200w,
+                                    {{img_url feature_image size="xxl"}} 2000w"
+                            sizes="(max-width: 1200px) 100vw, 1200px"
+                            src="{{img_url feature_image size="xl"}}"
+                            alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
+                        >
+                        {{#if feature_image_caption}}
+                            <figcaption>{{feature_image_caption}}</figcaption>
+                        {{/if}}
+                    </figure>
+                {{/if}}
+            </header>
+        </article>
+
+        <div class="gh-wrapper">
+            <section class="gh-section">
+                <article class="gh-article {{post_class}}">
+    
+                        <h2 class="gh-section-title">{{title}}</h2>
+
+                        <div class="gh-content gh-canvas gh-post-content">
+                            {{content}}
+                        </div>
+
+                        {{#is "post"}}
+                            <footer class="gh-article-footer gh-canvas">
+                                <nav class="gh-navigation">
+                                    <div class="gh-navigation-previous">
+                                        {{#prev_post}}
+                                            <a class="gh-navigation-link" href="{{url}}">
+                                                <span class="gh-navigation-label">{{> icons/arrow-left}} Previous issue</span>
+                                                <h4 class="gh-navigation-title">{{title}}</h4>
+                                            </a>
+                                        {{/prev_post}}
+                                    </div>
+
+                                    <div class="gh-navigation-middle"></div>
+
+                                    <div class="gh-navigation-next">
+                                        {{#next_post}}
+                                            <a class="gh-navigation-link" href="{{url}}">
+                                                <span class="gh-navigation-label">Next issue {{> icons/arrow-right}}</span>
+                                                <h4 class="gh-navigation-title">{{title}}</h4>
+                                            </a>
+                                        {{/next_post}}
+                                    </div>
+                                </nav>
+                            </footer>
+                        {{/is}}
+                </article>
+            </section>
+
+            <aside class="gh-sidebar">
+
+                <section class="gh-section">
+                    <h2 class="gh-section-title">Micro News</h2>                            
+                    <div class="matrix">
+                        <a class="element-logo" href="https://app.element.io" target="_blank">
+                            {{> "icons/element"}}
+                        </a>
+                        <a class="matrix-logo" href="https://matrix.org/" target="_blank">
+                            {{> "icons/matrix"}}
+                        </a>
+                        <div id="matrix-handle"></div>
+                    </div>
+                    <div id="matrix">
+                        <span class="tooltip">SCROLL</span>
+                    </div>
+                    <p class="gh-signup-description">
+                        <strong>-> Matrix Live: <em><span class="matrix-access"></em></span>
+                        </strong>
+                    </p>
+                </section>
+
+            </aside>
+
         </div>
-
-        {{#is "post"}}
-            <footer class="gh-article-footer gh-canvas">
-                <nav class="gh-navigation">
-                    <div class="gh-navigation-previous">
-                        {{#prev_post}}
-                            <a class="gh-navigation-link" href="{{url}}">
-                                <span class="gh-navigation-label">{{> icons/arrow-left}} Previous issue</span>
-                                <h4 class="gh-navigation-title">{{title}}</h4>
-                            </a>
-                        {{/prev_post}}
-                    </div>
-
-                    <div class="gh-navigation-middle"></div>
-
-                    <div class="gh-navigation-next">
-                        {{#next_post}}
-                            <a class="gh-navigation-link" href="{{url}}">
-                                <span class="gh-navigation-label">Next issue {{> icons/arrow-right}}</span>
-                                <h4 class="gh-navigation-title">{{title}}</h4>
-                            </a>
-                        {{/next_post}}
-                    </div>
-                </nav>
-            </footer>
-        {{/is}}
-    </article>
+    </div>
 </main>
 
 {{/post}}
