@@ -58,7 +58,7 @@
             <aside class="gh-sidebar">
 
                 <section class="gh-section">
-                    <h2 class="gh-section-title">About</h2>
+                    <h2 class="gh-section-title">Avatar</h2>
                     <div class="gh-about">
                         {{#if @site.icon}}
                             <img class="gh-about-icon" src="{{@site.icon}}" alt="{{@site.title}}">
@@ -90,7 +90,7 @@
 
                 {{#get "tags" include="count.posts" limit="all" as |topic|}}
                     <section class="gh-section">
-                        <h3 class="gh-section-title">Topics</h3>
+                        <h3 class="gh-section-title">Shortcuts</h3>
 
                         <div class="gh-topic">
                             {{#foreach topic}}
@@ -106,7 +106,7 @@
                 {{/get}}
 
                 <section class="gh-section">
-                    <h2 class="gh-section-title">Matrix Live</h2>                            
+                    <h2 class="gh-section-title">Micro News</h2>                            
                     <div class="matrix">
                         <a class="element-logo" href="https://app.element.io" target="_blank">
                             {{> "icons/element"}}
@@ -120,8 +120,8 @@
                         <span class="tooltip">SCROLL</span>
                     </div>
                     <p class="gh-signup-description">
-                        <strong>-> Micro News: <em><span class="matrix-access"></em></span>
-                        <br>-> Contact us on Matrix...</strong>
+                        <strong>-> Matrix Live: <em><span class="matrix-access"></em></span>
+                        </strong>
                     </p>
                 </section>
 
