@@ -67,7 +67,7 @@ taxonomies:
   author: /author/{slug}/
 ```
 
-If you want to show an overview of all tags used on your page on an overview page, download and edit `routes.yaml` from your Ghost Publishing Settings - Labs Page to add `tags` to your `routes` (at the bottom of `https://your-domain-name/ghost/#/settings/labs`). Then upload your modified version of `routes.yaml`.
+If you want to show an overview of all tags used on your page on an overview page, you have to first download `routes.yaml` from your Ghost Publishing Settings - Labs Page (at the bottom of `https://your-domain-name/ghost/#/settings/labs`). Edit the file on your computer and upload your modified version of `routes.yaml` via your Ghost Publishing Settings Page.
 
 To include tags into your page navigation, you then just need to add it in your Ghost Publishing Settings - Navigation Page page as `https://your-domain-name/tags/`
 
