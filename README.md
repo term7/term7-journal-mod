@@ -3,17 +3,16 @@
 This is a modded version of the original [Journal theme](https://github.com/tryghost/journal) for [Ghost](https://github.com/tryghost/ghost/), and only used for theme installation!<br>
 If you're looking to contribute to Ghost, head over to the main repository [here](https://github.com/TryGhost/Themes).
 
-[Ghost](https://github.com/tryghost/ghost/) advertises the ability to grow the audience of a website into a business. It makes use of [Stripe](https://stripe.com/en-gb-us) as a payment system, [JSDELIVER](https://www.jsdelivr.com/) as a CDN to enable Portal login & registrations, as well as [Mailgun](https://www.mailgun.com/) as a newsletter provider. With Ghost it is easy to implement a professional newsletter and subscription based content to earn recurring revenue. We don't want to use these features, because we run a site focused on privacy and implementing them would require us to trust third parties with visitor data.
+[Ghost](https://github.com/tryghost/ghost/) advertises the ability to grow the audience of a website into a business. It makes use of Stripe as a payment system and Mailgun as a newsletter provider. With Ghost it is easy to implement a professional newsletter and subscription based content to earn recurring revenue. We don't want to use these features, because we run a site focused on privacy and implementing them would require us to trust third parties with visitor data.
 
 #### IMPORTANT CHANGES:
 
 - We removed the portal with all its signup and subscription options: no newsletter, no subscription based content
-- We removed the search functionality
-- We removed content related to Twitter and Facebook
+- We removed the search functionality because it leverages a third party service: [UNPKG](https://unpkg.com)
+- We removed content related to twitter and facebook
 - We changed the copyright from © to /| copyme /|
 - We added a hook for Matrix Live
 - We added jQuery (necessary for Matrix Live)
-- We created a custom dynamic tags.hbs and edited routes.yaml to create an overview page for all tags used in posts
 
 
 # Matrix Live
@@ -49,84 +48,41 @@ To include links to your Github page and to your Mastodon account, also add the 
 
 Again, don't forget to change `your-username` and `your-mastodon-server` to the appropriate values!
 
-# Custom Tags Page
-
-To include a custom dynamic tags page, we created [tags.hbs](tags.hbs) as a modified version of [default.hbs](default.hbs) and edited our `routes.yaml` to look like this:
-
-```
-routes:
-  /tags/: tags
-
-collections:
-  /:
-    permalink: /{slug}/
-    template: index
-
-taxonomies:
-  tag: /tag/{slug}/
-  author: /author/{slug}/
-```
-
-If you want to show an overview of all tags used on your page on an overview page, you have to first download `routes.yaml` from your Ghost Publishing Settings - Labs Page (at the bottom of `https://your-domain-name/ghost/#/settings/labs`). Edit the file on your computer and upload your modified version of `routes.yaml` via your Ghost Publishing Settings Page.
-
-To include tags into your page navigation, you then just need to add it in your Ghost Publishing Settings - Navigation Page page as `https://your-domain-name/tags/`
-
-# AN IMPORTANT NOTICE ABOUT PRIVACY
+# AN IMPORTANT NOTICE ABOUT PRIVACY:
 
 This is a quote from Ghost's [privacy declaration](https://github.com/TryGhost/Ghost/blob/main/PRIVACY.md):
 
-<em>To easily load functionality for membership features & search, Ghost leverages [JSDELIVER](https://unpkg.com) to provide a CDN for drop-in scripts.</em>
+<em>To easily load member functionality for membership features, Ghost leverages [UNPKG](https://unpkg.com) to provide a CDN for drop-in script known as Portal. If member signups are disabled, no CDN will be injected.</em>
 
-Even if you don't use functionality like the Signup Portal, in order to search posts, tags and authors, Ghost loads JSDELIVER nevertheless. We removed all elements and buttons in our theme design that are related to search functionality because we hoped in consequence the CDN also won't be injected anymore. However, the CDN still is injected into our website. If you look at the page source, it looks like this (the data key always is an individual key for each website):
+While this is true for the Portal, in order to serch posts, tags and authors, Ghost loads UNPKG nevertheless to provide search functionality on the page. We removed all elements and buttons in our theme that are related to search functionality because we hoped in consequence the CDN also won't be injected anymore. However, the CDN still is injected into our website. If you look at the page source, it looks like this (the data key always is an individual key for each website):
 
 
 ```
-<script defer src="https://cdn.jsdelivr.net/npm/@tryghost/sodo-search@~1.1/umd/sodo-search.min.js" data-key="77fa60d37b3ada6d747320b139" data-styles="https://cdn.jsdelivr.net/npm/@tryghost/sodo-search@~1.1/umd/main.css" data-sodo-search="https://term7.info/" crossorigin="anonymous"></script>
+<script defer src="https://unpkg.com/@tryghost/sodo-search@~1.0.0/umd/sodo-search.min.js" data-sodo-search="https://journal.ghost.io/" data-version="1.0.0" data-key="77fa60d37b3ada6d747320b139" crossorigin="anonymous"></script>
 ```
 
-While search functionality is a nice feature (at the very latest when the content on your site grows), and even though JSDELIVER is an open source project that is for example used by Modzilla, we still don't like having to trust third parties. Our site does not need a CDN. To see how JSDELIVER works, check out their own [Infographic](https://www.jsdelivr.com/network/infographic). There you also see in which way 3rd parties are integrated... The injected CDN further loads additional resources (Javascript and CSS stylesheets), over which we have no direct control. We do believe JSDELIVR is a good project, but eventually there always is trust involved if you integrate 3rd party scripts that will be updated by this 3rd party and thus automatically integrated into your installation (to improve the software, make it more secure, eliminate bugs, etc.). For privacy reasons we want to serve all scripts, fonts, etc. locally.
-However a CDN can make a lot of sense when you run a website that has a lot of traffic, if you want to have subscribers to your content, implement a newsletter, etc. In this case we recommend you use the standard installation of ghost and don't temper with its core configuration.
+While search functionality is a nice feature, and even though UNPKG is an open source project, we don't like having to trust third parties. UNPKG still is powered by [Cloudflare](https://www.cloudflare.com/en-gb/privacypolicy/)... The injected CDN further loads additional resources (Javascript and CSS stylesheets), over which we have no direct control. For privacy reasons we want to serve all scripts, fonts, etc. locally.
 
-If you do want to stop loading [JSDELIVER](https://www.jsdelivr.com/) you will have to host Ghost on your own VPS and change a configuration file. You can find instructions on how to install Ghost [here](https://ghost.org/docs/install/).
-
+In oder to stop loading [UNPKG](https://unpkg.com) you will have to host Ghost on your own VPS and change a configuration file. You can find instructions on how to install Ghost [here](https://ghost.org/docs/install/).<br>
 Then, log into your VPS, enter the directory of your ghost installation and edit '/versions/5.x.x/core/shared/config/defaults.json', i.e.:
 
 `cd /var/www/ghost`<br>
-`nano config.production.json`
+`nano versions/5.4.0/core/shared/config/defaults.json`
 
-To disable all features that rely on JSDELIVR these lines:
-
-```
-  "portal": {
-    "url": ""
-  },
-  "sodoSearch": {
-    "url": ""
-  },
-  "comments": {
-    "url": ""
-  },
-  "editor": {
-    "url": ""
-  }
-```
-
-Here you can also disable other functions that are enabled by default and outlined in Ghost's [privacy declaration](https://github.com/TryGhost/Ghost/blob/main/PRIVACY.md).<br>
-It is up to you!
+Delete these lines:
 
 ```
-  "privacy": {
-    "useUpdateCheck": false,
-    "useGravatar": false,
-    "useRpcPing": false,
-    "useStructuredData": false
-  },
+"sodoSearch": {
+    "url": "https://unpkg.com/@tryghost/sodo-search@~1.0.0/umd/sodo-search.min.js",
+    "version": "1.0.0"
+},
 ```
 
 Then restart Ghost:
 
 `ghost restart`
 
+Thats it.<br>
 We encourage you to copy, adapt, share and re-distribute!
 
 # Copyright & License
