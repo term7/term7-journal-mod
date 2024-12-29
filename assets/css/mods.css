@@ -50,10 +50,11 @@ body,
 h1,
 h2,
 h3,
+.gh-loadmore,
 .gh-article-excerpt,
 .gh-card-excerpt,
 .kg-toggle-heading-text {
-    color: #ffffff;
+    color: #ffffff !important;
 }
 
 #gh-head .gh-icon-btn {

@@ -71,25 +71,19 @@
 
             <aside class="gh-sidebar">
 
-                <section class="gh-section">
-                    <h2 class="gh-section-title">Micro News</h2>                            
-                    <div class="matrix">
-                        <a class="element-logo" href="https://app.element.io" target="_blank">
-                            {{> "icons/element"}}
-                        </a>
-                        <a class="matrix-logo" href="https://matrix.org/" target="_blank">
-                            {{> "icons/matrix"}}
-                        </a>
-                        <div id="matrix-handle"></div>
-                    </div>
-                    <div id="matrix">
-                        <span class="tooltip">SCROLL</span>
-                    </div>
-                    <p class="gh-signup-description">
-                        <strong>-> Matrix Live: <em><span class="matrix-access"></em></span>
-                        </strong>
-                    </p>
-                </section>
+                {{#get "posts" filter="featured:true" limit="all" as |featured|}}
+                    {{#if featured}}
+                        <section class="gh-section">
+                            <h3 class="gh-section-title">Featured</h3>
+
+                            <div class="gh-featured gh-feed">
+                                {{#foreach featured}}
+                                    {{> loop}}
+                                {{/foreach}}
+                            </div>
+                        </section>
+                    {{/if}}
+                {{/get}}
 
             </aside>
 
