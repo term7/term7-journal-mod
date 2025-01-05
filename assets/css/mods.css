@@ -54,7 +54,10 @@ h3,
 .gh-article-excerpt,
 .gh-card-excerpt,
 .kg-toggle-heading-text {
-    color: #ffffff !important;
+    color: #ffffff;
+}
+.gh-loadmore:hover {
+    color: var(--color-light-gray) !important;
 }
 
 #gh-head .gh-icon-btn {
