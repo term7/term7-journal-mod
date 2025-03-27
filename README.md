@@ -66,8 +66,12 @@ While search functionality is a nice feature, and even though UNPKG is an open s
 In oder to stop loading [UNPKG](https://unpkg.com) you will have to host Ghost on your own VPS and change a configuration file. You can find instructions on how to install Ghost [here](https://ghost.org/docs/install/).<br>
 Then, log into your VPS, enter the directory of your ghost installation and edit '/versions/5.x.x/core/shared/config/defaults.json', i.e.:
 
-`cd /var/www/ghost`<br>
-`nano versions/5.4.0/core/shared/config/defaults.json`
+```
+cd /var/www/ghost
+```
+```
+nano versions/5.4.0/core/shared/config/defaults.json
+```
 
 Delete these lines:
 
@@ -80,7 +84,9 @@ Delete these lines:
 
 Then restart Ghost:
 
-`ghost restart`
+```
+ghost restart
+```
 
 Thats it.<br>
 We encourage you to copy, adapt, share and re-distribute!
